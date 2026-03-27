@@ -34,7 +34,7 @@
   "error.empty_key": "Por favor ingresá tu API key de Groq.",
   "error.api": "Error de API. Verificá tu key e intentá de nuevo.",
   "about.title": "¿Por qué existe este proyecto?",
-  "about.slogan": "La IA no debería ser solo para grandes empresas — debería estar del lado del que busca trabajo.",
+  "about.slogan": "Mi misión es poner el poder de la IA en manos de las personas, no solo de las empresas. Herramientas inteligentes para potenciar tu talento",
   "about.p1": "Buscar trabajo es agotador. Cada oferta parece pedir una carta diferente, un tono diferente, un pitch diferente. Y muchas veces la barrera no es la experiencia — es no saber cómo presentarla.",
   "about.p2": "jobi Assistant nació de esa frustración. Es una herramienta open source, gratuita, sin registro, sin guardar datos — pensada para que cualquier persona, en cualquier parte del mundo, pueda postularse a un trabajo con la misma confianza que alguien que tiene un mentor o un equipo de recursos humanos detrás.",
   "about.p3": "Solo pegás tu CV y la oferta. La IA hace el resto: un mensaje de LinkedIn, un pitch corto y una carta de presentación completa, adaptados a ese trabajo específico — en el idioma del anuncio.",

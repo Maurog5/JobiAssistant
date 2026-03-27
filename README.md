@@ -1,7 +1,7 @@
 # jobi Assistant 🚀
 
-> *"La IA no debería ser solo para grandes empresas — debería estar del lado del que busca trabajo."*
-> *"AI shouldn't only work for big companies — it should be on the side of the jobi seeker."*
+> *"Mi misión es poner el poder de la IA en manos de las personas, no solo de las empresas. Herramientas inteligentes para potenciar tu talento."*
+> *"My mission is to put the power of AI in the hands of people, not just corporations. Intelligent tools to empower your talent.."*
 
 An open-source, free, no-signup AI tool to generate tailored jobi application materials in seconds — LinkedIn messages, short pitches, and full cover letters.
 
