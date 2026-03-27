@@ -58,23 +58,7 @@ Open http://localhost:4200
 
 ---
 
-## Deploy for free
 
-### Vercel (recommended)
-1. Push your fork to GitHub
-2. Go to vercel.com → Import project → select your repo
-3. Deploy — zero config needed
-
-### GitHub Pages
-```bash
-ng build --base-href="/jobi-assistant/"
-npx angular-cli-ghpages --dir=dist/jobi-assistant/browser
-```
-
-### Netlify
-Drag and drop the `dist/jobi-assistant/browser/` folder at app.netlify.com/drop
-
----
 
 ## How to use
 
