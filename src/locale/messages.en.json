@@ -34,7 +34,7 @@
   "error.empty_key": "Please enter your Groq API key.",
   "error.api": "API error. Check your key and try again.",
   "about.title": "Why does this project exist?",
-  "about.slogan": "AI shouldn't only work for big companies — it should be on the side of the jobi seeker.",
+  "about.slogan": "My mission is to put the power of AI in the hands of people, not just corporations. Intelligent tools to empower your talent.",
   "about.p1": "jobi hunting is exhausting. Every posting seems to want a different cover letter, a different tone, a different pitch. And often the barrier isn't your experience — it's not knowing how to present it.",
   "about.p2": "jobi Assistant was born from that frustration. It's an open source, free, no-signup, no-data-stored tool — built so that anyone, anywhere in the world, can apply for a jobi with the same confidence as someone who has a mentor or an HR team behind them.",
   "about.p3": "Just paste your CV and the jobi description. The AI does the rest: a LinkedIn message, a short pitch, and a full cover letter — all tailored to that specific jobi, in the language of the posting.",
