@@ -1,0 +1,72 @@
+<app-navbar (navigate)="navigate($event)"></app-navbar>
+
+<div class="container-fluid px-3 px-md-4 mt-3 mb-2">
+  <a href="#mis-redes" style="display: inline-block; text-decoration: none;">
+    <img src="assets/my-logo.png" 
+         alt="MG Logo" 
+         style="height: 45px; width: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #ffc107; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: block; cursor: pointer;">
+  </a>
+</div>
+<main class="container py-5">
+
+  <!-- HOME PAGE -->
+  <ng-container *ngIf="page() === 'home'">
+    <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold">
+        <span class="text-warning">
+          job<u style="text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 3px;">i</u>
+        </span>
+        
+        <span class="ms-1" style="color: #212529;">
+          <u style="text-decoration: underline; text-decoration-color: #000000; text-underline-offset: 8px; text-decoration-thickness: 3px;">A</u>ssistant
+        </span>
+      </h1>
+      <p class="text-secondary">{{ i18n.t('app.subtitle') }}</p>
+    </div>
+  
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-9">
+        <app-jobi-form (submitted)="onSubmit($event)"></app-jobi-form>
+        <app-results
+          [materials]="materials()"
+          [status]="status()"
+          [currentStep]="currentStep()">
+        </app-results>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- ABOUT PAGE -->
+  <ng-container *ngIf="page() === 'about'">
+    <app-about (goHome)="navigate('home')"></app-about>
+  </ng-container>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="mis-redes" class="bg-dark text-center py-4 mt-5">
+  <p class="text-warning fw-semibold mb-2" style="font-size:0.85rem; letter-spacing:0.05em;">
+    {{ i18n.t('footer.forall') }}
+  </p>
+
+  <div class="mb-3">
+    <a href="https://www.linkedin.com/in/mauro-gatica-a5aba3163/" target="_blank" class="text-secondary mx-2 fs-5">
+      <i class="bi bi-linkedin"></i>
+    </a>
+    <a href="https://github.com/Maurog5" target="_blank" class="text-secondary mx-2 fs-5">
+      <i class="bi bi-github"></i>
+    </a>
+   
+  </div>
+
+  <p class="text-secondary mb-1" style="font-size:0.8rem;">
+    {{ i18n.t('footer.rights') }}
+  </p>
+  
+  <p class="text-secondary mb-0" style="font-size:0.78rem;">
+    <a href="assets/LICENSE" target="_blank" class="text-secondary text-decoration-none border-bottom border-secondary">
+      {{ i18n.t('footer.opensource') }}
+    </a> 
+    &nbsp;·&nbsp; {{ i18n.t('footer.groq') }}
+  </p>
+</footer>

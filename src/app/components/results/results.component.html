@@ -1,0 +1,66 @@
+<div class="card shadow-sm border-0" *ngIf="status() !== 'idle'">
+  <div class="card-body p-4">
+    <h5 class="card-title mb-4 fw-semibold">{{ i18n.t('results.title') }}</h5>
+
+    <!-- Tabs -->
+    <ul class="nav nav-pills mb-3 gap-1">
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          [class.active]="activeTab === 'linkedin'"
+          (click)="setTab('linkedin')">
+          {{ i18n.t('results.linkedin') }}
+        </button>
+      </li>
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          [class.active]="activeTab === 'pitch'"
+          (click)="setTab('pitch')">
+          {{ i18n.t('results.pitch') }}
+        </button>
+      </li>
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          [class.active]="activeTab === 'cover'"
+          (click)="setTab('cover')">
+          {{ i18n.t('results.cover') }}
+        </button>
+      </li>
+    </ul>
+
+    <!-- Loading -->
+    <div *ngIf="status() === 'loading'" class="d-flex align-items-center gap-2 py-3 text-secondary">
+      <div class="spinner-border spinner-border-sm text-warning" role="status"></div>
+      <span class="small">{{ currentStep() }}</span>
+    </div>
+
+    <!-- Output -->
+    <div
+      *ngIf="status() === 'done' || (status() === 'loading' && getText())"
+      class="bg-light rounded p-3 mb-3"
+      style="white-space: pre-wrap; font-size: 0.92rem; line-height: 1.75; min-height: 120px;">
+      {{ getText() }}
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="status() === 'error'" class="alert alert-danger small py-2">
+      {{ i18n.t('error.api') }}
+    </div>
+
+    <!-- Copy button -->
+    <button
+      *ngIf="getText()"
+      class="btn btn-sm"
+      [class.btn-outline-secondary]="copiedTab !== activeTab"
+      [class.btn-success]="copiedTab === activeTab"
+      (click)="copy()">
+      {{ copiedTab === activeTab ? i18n.t('results.copied') : i18n.t('results.copy') }}
+    </button>
+    <span class="text-secondary d-flex align-items-center gap-2" style="font-size: 0.75rem; opacity: 0.8; justify-content: center;">
+      <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+      {{ i18n.t('results.disclaimer') }}
+    </span>
+  </div>
+</div>

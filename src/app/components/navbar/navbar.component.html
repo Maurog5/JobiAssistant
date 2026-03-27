@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <a class="navbar-brand fw-semibold" href="#" (click)="navigate.emit('home'); $event.preventDefault()">
+    <span class="text-warning">
+      job<u style="text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px;">i</u>
+    </span>
+    <span class="ms-1 text-white">
+      <u style="text-decoration: underline; text-decoration-color: #ffc107; text-underline-offset: 4px; text-decoration-thickness: 2px;">A</u>ssistant
+    </span>
+  </a>
+
+  <div class="ms-auto d-flex align-items-center gap-3">
+    <button
+      class="btn btn-sm btn-link text-secondary text-decoration-none"
+      (click)="navigate.emit('about')">
+      {{ i18n.t('nav.about') }}
+    </button>
+
+    <div class="d-flex align-items-center gap-1">
+      <button
+        class="btn btn-sm"
+        [class.btn-warning]="i18n.lang() === 'es'"
+        [class.btn-outline-secondary]="i18n.lang() !== 'es'"
+        (click)="setLang('es')">ES</button>
+      <button
+        class="btn btn-sm"
+        [class.btn-warning]="i18n.lang() === 'en'"
+        [class.btn-outline-secondary]="i18n.lang() !== 'en'"
+        (click)="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>

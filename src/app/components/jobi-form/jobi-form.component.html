@@ -1,0 +1,84 @@
+<div class="card shadow-sm border-0 mb-4">
+  <div class="card-body p-4">
+    <h5 class="card-title mb-4 fw-semibold">{{ i18n.t('form.title') }}</h5>
+
+    <div class="mb-3">
+      <label class="form-label text-secondary small fw-medium">
+        {{ i18n.t('form.cv.label') }}
+      </label>
+      <textarea
+        class="form-control"
+        rows="6"
+        [(ngModel)]="cv"
+        [placeholder]="i18n.t('form.cv.placeholder')">
+      </textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label text-secondary small fw-medium">
+        {{ i18n.t('form.jobi.label') }}
+      </label>
+      <textarea
+        class="form-control"
+        rows="6"
+        [(ngModel)]="jobiDescription"
+        [placeholder]="i18n.t('form.jobi.placeholder')">
+      </textarea>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <label class="form-label text-secondary small fw-medium">
+          {{ i18n.t('form.position.label') }}
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="position"
+          [placeholder]="i18n.t('form.position.placeholder')" />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-secondary small fw-medium">
+          {{ i18n.t('form.company.label') }}
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="company"
+          [placeholder]="i18n.t('form.company.placeholder')" />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label text-secondary small fw-medium">
+        {{ i18n.t('form.apikey.label') }}
+      </label>
+      <div class="input-group">
+        <input
+          [type]="showApiKey ? 'text' : 'password'"
+          class="form-control font-monospace"
+          [(ngModel)]="apiKey"
+          [placeholder]="i18n.t('form.apikey.placeholder')" />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="showApiKey = !showApiKey">
+          {{ showApiKey ? '🙈' : '👁️' }}
+        </button>
+      </div>
+      <div class="form-text">
+        {{ i18n.t('form.apikey.help') }}
+      </div>
+    </div>
+
+    <div class="alert alert-danger py-2 small" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <button
+      class="btn btn-warning w-100 fw-semibold py-2"
+      (click)="submit()">
+      {{ i18n.t('form.generate') }}
+    </button>
+  </div>
+</div>

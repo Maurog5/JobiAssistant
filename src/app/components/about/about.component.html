@@ -1,0 +1,57 @@
+<div class="py-5">
+
+  <!-- Hero -->
+  <div class="text-center mb-5">
+    <span class="badge bg-warning text-dark mb-3 px-3 py-2" style="font-size:0.8rem; letter-spacing:0.05em;">
+      OPEN SOURCE · MIT
+    </span>
+    <h2 class="display-6 fw-bold mb-3">{{ i18n.t('about.title') }}</h2>
+    <p class="lead text-secondary fst-italic mx-auto" style="max-width:620px;">
+      "{{ i18n.t('about.slogan') }}"
+    </p>
+  </div>
+
+  <!-- Story -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-7 col-md-9">
+      <div class="card border-0 shadow-sm p-4 p-md-5">
+        <p class="mb-3" style="line-height:1.85;">{{ i18n.t('about.p1') }}</p>
+        <p class="mb-3" style="line-height:1.85;">{{ i18n.t('about.p2') }}</p>
+        <p class="mb-0" style="line-height:1.85;">{{ i18n.t('about.p3') }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature cards -->
+  <div class="row justify-content-center g-3 mb-5">
+    <div class="col-md-3 col-sm-6">
+      <div class="card border-0 shadow-sm h-100 text-center p-4">
+        <div class="fs-1 mb-2">🔓</div>
+        <h6 class="fw-semibold mb-1">{{ i18n.t('about.opensource') }}</h6>
+        <p class="text-secondary small mb-0">{{ i18n.t('about.opensource.desc') }}</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="card border-0 shadow-sm h-100 text-center p-4">
+        <div class="fs-1 mb-2">🔒</div>
+        <h6 class="fw-semibold mb-1">{{ i18n.t('about.private') }}</h6>
+        <p class="text-secondary small mb-0">{{ i18n.t('about.private.desc') }}</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="card border-0 shadow-sm h-100 text-center p-4">
+        <div class="fs-1 mb-2">🆓</div>
+        <h6 class="fw-semibold mb-1">{{ i18n.t('about.free') }}</h6>
+        <p class="text-secondary small mb-0">{{ i18n.t('about.free.desc') }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="text-center">
+    <button class="btn btn-warning btn-lg fw-semibold px-5" (click)="goHome.emit()">
+      {{ i18n.t('about.cta') }} →
+    </button>
+  </div>
+
+</div>

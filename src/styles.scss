@@ -1,0 +1,27 @@
+body {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.nav-link {
+  border-radius: 20px !important;
+  font-size: 0.85rem;
+  padding: 0.35rem 1rem !important;
+}
+
+.form-control, .form-select {
+  border-radius: 8px;
+  font-size: 0.92rem;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+.btn-warning {
+  color: #1a1a1a;
+}
