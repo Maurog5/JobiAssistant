@@ -1,127 +1,83 @@
-# jobi Assistant 🚀
+Jobi Assistant 🚀
+"Mi misión es poner el poder de la IA en manos de las personas, no solo de las empresas. Herramientas inteligentes para potenciar tu talento."
 
-> *"Mi misión es poner el poder de la IA en manos de las personas, no solo de las empresas. Herramientas inteligentes para potenciar tu talento."*
-> *"My mission is to put the power of AI in the hands of people, not just corporations. Intelligent tools to empower your talent.."*
+"My mission is to put the power of AI in the hands of people, not just corporations. Intelligent tools to empower your talent."
 
-An open-source, free, no-signup AI tool to generate tailored jobi application materials in seconds — LinkedIn messages, short pitches, and full cover letters.
+Una herramienta de IA de código abierto, gratuita y sin registros para generar materiales de postulación laboral personalizados en segundos: mensajes de LinkedIn, presentaciones cortas y cartas de presentación completas.
 
-**Built with:** Angular 17 · Bootstrap 5 · Groq AI (LLaMA 3.3 70B)
+Tecnologías: Angular 17 · Bootstrap 5 · Groq AI (LLaMA 3.3 70B)
 
-🌐 **Live demo:** [your-deploy-url-here]
-⭐ **Star this repo** if it helped you land a jobi!
+🌐 Demo en vivo: [https://www.google.com/search?q=tu-url-de-vercel-aqui.com]
+⭐ Dale una estrella a este repo si te ayudó a conseguir tu próximo Jobi!
 
----
+Características principales
+🌐 Multilingüe — Español e Inglés (fácil de extender a otros idiomas).
 
-## Features
+🤖 Potenciado por IA — Usa LLaMA 3.3 70B de Groq, con un prompt optimizado exclusivamente para búsqueda de empleo.
 
-- 🌐 Multilingual — Spanish & English (easy to extend)
-- 🤖 AI-powered — Groq's LLaMA 3.3 70B, optimized prompt for jobi applications only
-- 🔑 Privacy first — API key goes directly to Groq, nothing stored anywhere
-- 📋 3 outputs — LinkedIn message, short pitch, full cover letter
-- 📱 Responsive — Bootstrap 5, works on any device
-- 🔓 Open source — fork it, customize it, make it yours
+🔑 Privacidad primero — Tu API Key va directo a Groq; nada se guarda en ningún servidor.
 
----
+📋 3 Resultados en 1 — Mensaje para LinkedIn, Pitch corto y Carta de presentación.
 
-## Getting Started (fork & run)
+📱 Responsive — Diseño con Bootstrap 5, funciona en cualquier dispositivo.
 
-### 1. Fork this repo on GitHub
+🔓 Código Abierto — Haz un fork, personalízalo y hazlo tuyo.
 
-Click **Fork** at the top right.
+Cómo empezar (Fork & Run)
+1. Haz un Fork del repositorio
+Haz clic en el botón Fork arriba a la derecha en GitHub.
 
-### 2. Clone and install
-
-```bash
-git clone https://github.com/YOUR_USERNAME/jobi-assistant.git
+2. Clona e instala
+Bash
+git clone https://github.com/TU_USUARIO/jobi-assistant.git
 cd jobi-assistant
 npm install
-```
+3. Configura tu API Key (Opcional)
+Copia el archivo de ejemplo de ambiente:
 
-### 3. Set your API key (optional)
-
-Copy the example environment file:
-```bash
+Bash
 cp src/environments/environment.example.ts src/environments/environment.ts
-```
+Edita environment.ts y añade tu clave de Groq, o déjala vacía para ingresarla directamente en la web cada vez que la uses.
+Consigue tu clave gratis en: https://console.groq.com
 
-Edit `environment.ts` and add your Groq API key, OR leave it empty and enter it directly in the app UI each time.
+Cómo usarlo
+Pega tu CV en texto plano.
 
-Get a free key at: https://console.groq.com
+Pega la descripción del empleo.
 
-### 4. Run locally
+Ingresa el nombre del puesto y la empresa (recomendado).
 
-```bash
-ng serve
-```
+Ingresa tu Groq API Key.
 
-Open http://localhost:4200
+Haz clic en Generate — obtén 3 textos listos para usar.
 
----
+La IA detecta automáticamente el idioma de la oferta y responde en ese mismo idioma.
 
-
-
-## How to use
-
-1. Paste your CV in plain text
-2. Paste the jobi description
-3. Enter the jobi title and company name (recommended)
-4. Enter your Groq API key
-5. Click **Generate** — get 3 ready-to-use texts in seconds
-6. Copy each one with one click
-
-The AI is tuned to respond ONLY to jobi application requests.
-It detects the jobi description language and writes in that language automatically.
-
----
-
-## Adding a new language
-
-1. Create `src/locale/messages.XX.json` copying `messages.en.json`
-2. In `i18n.service.ts`, add `'XX'` to the `Lang` type and import the new JSON
-3. Add it to the `TRANSLATIONS` object
-4. Add a button in `navbar.component.html`
-
----
-
-## Project Structure
-
-```
+Estructura del Proyecto
 src/
 ├── app/
 │   ├── components/
-│   │   ├── navbar/         # Nav + language switcher
-│   │   ├── about/          # About / why this exists page
-│   │   ├── jobi-form/       # Input form
-│   │   └── results/        # Generated materials with tabs
-│   ├── models/
-│   │   └── jobi.model.ts    # TypeScript interfaces
+│   │   ├── navbar/         # Navegación + selector de idioma
+│   │   ├── jobi-form/      # Formulario de entrada
+│   │   └── results/        # Resultados generados con pestañas
 │   └── services/
-│       ├── groq.service.ts # Groq API + optimized system prompt
-│       └── i18n.service.ts # Translation service (signals-based)
-├── environments/
-│   ├── environment.ts          # Your config (gitignored)
-│   └── environment.example.ts  # Template for contributors
+│       ├── groq.service.ts # Conexión con API + Prompt del sistema
+│       └── i18n.service.ts # Servicio de traducción (Signals)
 └── locale/
-    ├── messages.en.json
-    └── messages.es.json
-```
+    ├── messages.en.json    # Textos en Inglés
+    └── messages.es.json    # Textos en Español
+Contribuir
+¡Las pull requests son bienvenidas! Ideas para mejorar:
 
----
+Añadir más idiomas (Italiano, Francés, Portugués...).
 
-## Contributing
+Añadir un formateador/limpiador de CV.
 
-Pull requests are welcome. Ideas for contributions:
-- Add more languages (Italian, French, Portuguese...)
-- Add a CV formatter/cleaner
-- Add export to PDF
-- Dark mode
+Exportar los resultados a PDF.
 
----
+Modo oscuro (Dark Mode).
 
-## License
+Licencia
+Licencia MIT — libre para usar, modificar y distribuir.
 
-MIT License — free to use, modify, and distribute.
-
----
-
-*Created by [Mauro Gatica](https://linkedin.com/in/mauro-gatica-a5aba3163/) — Built so everyone can apply with confidence.*
+Creado por Mauro Gatica — Diseñado para que todos puedan postularse con confianza.
