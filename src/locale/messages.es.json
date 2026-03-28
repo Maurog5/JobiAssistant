@@ -15,7 +15,7 @@
   "form.company.placeholder": "ej. Nexsoft S.p.A.",
   "form.apikey.label": "API Key de Groq",
   "form.apikey.placeholder": "gsk_...",
-  "form.apikey.help": "Obtené tu key gratis en console.groq.com — nunca se almacena ni se comparte.",
+  "form.apikey.help": "Obtené tu key gratis en console.groq.com nunca se almacena ni se comparte.",
   "form.generate": "Generar Materiales",
   "form.generating": "Generando...",
   "form.regenerate": "Regenerar",
