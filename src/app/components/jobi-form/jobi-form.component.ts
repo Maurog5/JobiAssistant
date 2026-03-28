@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { I18nService } from '../../services/i18n.service';
 import { jobinput } from '../../models/jobi.model';
+
 @Component({
   selector: 'app-jobi-form',
   standalone: true,
@@ -11,7 +12,7 @@ import { jobinput } from '../../models/jobi.model';
 })
 export class jobiFormComponent {
   i18n = inject(I18nService);
-
+  showTutorial = false;
   submitted = output<jobinput>();
 
   cv = '';
@@ -21,6 +22,12 @@ export class jobiFormComponent {
   apiKey = '';
   showApiKey = false;
   error = '';
+
+  closeTutorialOnBackdrop(event: MouseEvent) {
+    if (event.target === event.currentTarget) {
+      this.showTutorial = false;
+    }
+  }
 
   submit() {
     this.error = '';
@@ -37,10 +44,10 @@ export class jobiFormComponent {
     });
     this.reset();
   }
+
   reset() {
     this.jobiDescription = '';
-    this.position = '';       
+    this.position = '';
     this.company = '';
   }
 }
-

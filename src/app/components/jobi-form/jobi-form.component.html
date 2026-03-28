@@ -49,6 +49,7 @@
       </div>
     </div>
 
+    <!-- API KEY FIELD -->
     <div class="mb-4">
       <label class="form-label text-secondary small fw-medium">
         {{ i18n.t('form.apikey.label') }}
@@ -63,11 +64,18 @@
           class="btn btn-outline-secondary"
           type="button"
           (click)="showApiKey = !showApiKey">
-          {{ showApiKey ? '🙈' : '👁️' }}
+          {{ showApiKey ? '👁️' : '🙈' }}
         </button>
       </div>
-      <div class="form-text">
-        {{ i18n.t('form.apikey.help') }}
+      <div class="d-flex align-items-center justify-content-between mt-1">
+        <span class="form-text mb-0">{{ i18n.t('form.apikey.help') }}</span>
+        <button
+          class="btn btn-link btn-sm p-0 text-warning text-decoration-underline"
+          style="font-size: 0.78rem; white-space: nowrap;"
+          type="button"
+          (click)="showTutorial = true">
+          {{ i18n.t('form.apikey.tutorial') }} →
+        </button>
       </div>
     </div>
 
@@ -80,5 +88,141 @@
       (click)="submit()">
       {{ i18n.t('form.generate') }}
     </button>
+  </div>
+</div>
+
+<!-- TUTORIAL MODAL -->
+<div
+  *ngIf="showTutorial"
+  class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+  style="background: rgba(0,0,0,0.55); z-index: 1055;"
+  (click)="closeTutorialOnBackdrop($event)">
+
+  <div
+    class="bg-white rounded-3 shadow-lg"
+    style="width: 100%; max-width: 540px; max-height: 90vh; overflow-y: auto; margin: 1rem;">
+
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between p-4 border-bottom">
+      <h6 class="mb-0 fw-semibold">{{ i18n.t('tutorial.title') }}</h6>
+      <button
+        class="btn-close"
+        type="button"
+        (click)="showTutorial = false">
+      </button>
+    </div>
+
+    <!-- Steps -->
+    <div class="p-4">
+
+      <!-- Step 1 -->
+      <div class="d-flex gap-3 mb-4">
+        <div class="flex-shrink-0 d-flex align-items-center justify-content-center rounded-circle fw-semibold"
+          style="width:32px; height:32px; background:#F5C842; color:#1a1a00; font-size:14px;">
+          1
+        </div>
+        <div class="flex-grow-1">
+          <p class="fw-medium mb-1" style="font-size:0.92rem;">{{ i18n.t('tutorial.step1.title') }}</p>
+          <p class="text-secondary mb-2" style="font-size:0.83rem; line-height:1.6;">{{ i18n.t('tutorial.step1.desc') }}</p>
+          <!-- Browser mockup -->
+          <div class="border rounded-2 overflow-hidden">
+            <div class="d-flex align-items-center gap-1 px-2 py-1" style="background:#1e1e2e;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#28c840;display:inline-block;"></span>
+              <span class="ms-2 font-monospace text-secondary" style="font-size:10px;">console.groq.com</span>
+            </div>
+            <div class="p-3 bg-light">
+              <div class="fw-medium mb-2" style="font-size:12px;">⚡ Groq Console</div>
+              <div class="d-flex gap-2">
+                <span class="badge rounded-pill px-3 py-2" style="background:#F97316; font-size:11px;">Sign up free</span>
+                <span class="badge rounded-pill px-3 py-2 bg-secondary" style="font-size:11px;">Log in</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connector -->
+      <div class="ms-4 ps-1 mb-4" style="border-left: 1.5px dashed #dee2e6; height: 16px;"></div>
+
+      <!-- Step 2 -->
+      <div class="d-flex gap-3 mb-4">
+        <div class="flex-shrink-0 d-flex align-items-center justify-content-center rounded-circle fw-semibold"
+          style="width:32px; height:32px; background:#F5C842; color:#1a1a00; font-size:14px;">
+          2
+        </div>
+        <div class="flex-grow-1">
+          <p class="fw-medium mb-1" style="font-size:0.92rem;">{{ i18n.t('tutorial.step2.title') }}</p>
+          <p class="text-secondary mb-2" style="font-size:0.83rem; line-height:1.6;">{{ i18n.t('tutorial.step2.desc') }}</p>
+          <!-- Sidebar mockup -->
+          <div class="border rounded-2 overflow-hidden">
+            <div class="d-flex align-items-center gap-1 px-2 py-1" style="background:#1e1e2e;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#28c840;display:inline-block;"></span>
+              <span class="ms-2 font-monospace text-secondary" style="font-size:10px;">console.groq.com/keys</span>
+            </div>
+            <div class="d-flex bg-light">
+              <div class="p-3 border-end" style="font-size:11px; min-width:90px; line-height:2.2; color:#888;">
+                <div>Dashboard</div>
+                <div class="fw-semibold" style="color:#F5C842;">API Keys</div>
+                <div>Usage</div>
+              </div>
+              <div class="p-3 flex-grow-1">
+                <div class="fw-medium mb-2" style="font-size:11px;">API Keys</div>
+                <span class="badge px-3 py-2" style="background:#F97316; font-size:10px;">+ Create API Key</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connector -->
+      <div class="ms-4 ps-1 mb-4" style="border-left: 1.5px dashed #dee2e6; height: 16px;"></div>
+
+      <!-- Step 3 -->
+      <div class="d-flex gap-3 mb-2">
+        <div class="flex-shrink-0 d-flex align-items-center justify-content-center rounded-circle fw-semibold"
+          style="width:32px; height:32px; background:#F5C842; color:#1a1a00; font-size:14px;">
+          3
+        </div>
+        <div class="flex-grow-1">
+          <p class="fw-medium mb-1" style="font-size:0.92rem;">{{ i18n.t('tutorial.step3.title') }}</p>
+          <p class="text-secondary mb-2" style="font-size:0.83rem; line-height:1.6;">{{ i18n.t('tutorial.step3.desc') }}</p>
+          <!-- Key mockup -->
+          <div class="border rounded-2 overflow-hidden">
+            <div class="d-flex align-items-center gap-1 px-2 py-1" style="background:#1e1e2e;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#28c840;display:inline-block;"></span>
+            </div>
+            <div class="p-3 bg-light">
+              <div class="text-secondary mb-2" style="font-size:11px;">{{ i18n.t('tutorial.step3.keylabel') }}</div>
+              <div class="d-flex align-items-center justify-content-between rounded-2 px-3 py-2 border bg-white font-monospace"
+                style="font-size:11px; color:#555;">
+                <span>gsk_xxxxxxxxxxxxxxxxxxxx</span>
+                <span class="badge rounded-pill px-2" style="background:#F5C842; color:#1a1a00; font-size:10px;">
+                  {{ i18n.t('tutorial.step3.copy') }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="d-flex align-items-center justify-content-between px-4 py-3 border-top bg-light rounded-bottom-3">
+      <span class="text-secondary" style="font-size:0.78rem;">{{ i18n.t('tutorial.footer') }}</span>
+      <button
+        class="btn btn-warning btn-sm fw-medium px-4"
+        type="button"
+        (click)="showTutorial = false">
+        {{ i18n.t('tutorial.cta') }}
+      </button>
+    </div>
+
   </div>
 </div>
