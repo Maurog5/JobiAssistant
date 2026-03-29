@@ -61,5 +61,11 @@
   "tutorial.step3.keylabel": "Tu nueva API key:",
   "tutorial.step3.copy": "Copiar",
   "tutorial.footer": "Gratis · Sin tarjeta · Listo en 2 minutos",
-  "tutorial.cta": "¡Entendido!"
+  "tutorial.cta": "¡Entendido!",
+
+  "form.cv.import": "Importar PDF",
+  "form.cv.extracting": "Extrayendo...",
+  "form.cv.import_hint": "o pega el texto manualmente"
+
+ 
 }

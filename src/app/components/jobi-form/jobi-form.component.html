@@ -6,6 +6,33 @@
       <label class="form-label text-secondary small fw-medium">
         {{ i18n.t('form.cv.label') }}
       </label>
+    
+      <input
+        #fileInput
+        type="file"
+        accept="application/pdf"
+        class="d-none"
+        (change)="onFileSelected($event)" />
+    
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <label
+          class="btn-upload d-flex align-items-center gap-2"
+          [class.loading]="isExtractingPdf"
+          (click)="!isExtractingPdf && fileInput.click()">
+          <span *ngIf="!isExtractingPdf">📄 {{ i18n.t('form.cv.import') }}</span>
+          <span *ngIf="isExtractingPdf" class="d-flex align-items-center gap-2">
+            <span class="spinner-border spinner-border-sm"></span>
+            {{ i18n.t('form.cv.extracting') }}
+          </span>
+        </label>
+          <span *ngIf="importedFileName" class="text-secondary d-flex align-items-center gap-1" style="font-size: 0.78rem;">
+            ✅ {{ importedFileName }}
+          </span>
+          <span *ngIf="!importedFileName" class="text-secondary" style="font-size: 0.78rem;">
+            {{ i18n.t('form.cv.import_hint') }}
+          </span>
+        </div>
+    
       <textarea
         class="form-control"
         rows="6"
@@ -212,6 +239,7 @@
       </div>
 
     </div>
+   
 
     <!-- Footer -->
     <div class="d-flex align-items-center justify-content-between px-4 py-3 border-top bg-light rounded-bottom-3">
@@ -223,6 +251,8 @@
         {{ i18n.t('tutorial.cta') }}
       </button>
     </div>
+
+    
 
   </div>
 </div>

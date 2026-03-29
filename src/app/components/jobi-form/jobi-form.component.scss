@@ -1,0 +1,37 @@
+.btn-upload {
+  display: inline-flex;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1.5px dashed #ced4da;
+  background: #fafafa;
+  color: #495057;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  user-select: none;
+
+  &:hover {
+    border-color: #ffc107;
+    background: #fffbea;
+    color: #000;
+  }
+
+  &.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.badge-demo {
+  cursor: pointer;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.72rem;
+  color: #6c757d;
+  transition: all 0.2s;
+
+ 
+}

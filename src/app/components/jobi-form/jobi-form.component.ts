@@ -2,16 +2,20 @@ import { Component, inject, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { I18nService } from '../../services/i18n.service';
+import { PdfExtractorService } from '../../services/pdf-extractor.service';
 import { jobinput } from '../../models/jobi.model';
 
 @Component({
   selector: 'app-jobi-form',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './jobi-form.component.html'
+  templateUrl: './jobi-form.component.html',
+  styleUrl: './jobi-form.component.scss'
 })
 export class jobiFormComponent {
   i18n = inject(I18nService);
+  pdfExtractor = inject(PdfExtractorService);
+  
   showTutorial = false;
   submitted = output<jobinput>();
 
@@ -22,12 +26,38 @@ export class jobiFormComponent {
   apiKey = '';
   showApiKey = false;
   error = '';
+  isExtractingPdf = false;           // ← nuevo
 
   closeTutorialOnBackdrop(event: MouseEvent) {
     if (event.target === event.currentTarget) {
       this.showTutorial = false;
     }
   }
+
+  // ── nuevo ──────────────────────────────────────────
+  
+  importedFileName = '';
+
+async onFileSelected(event: Event) {
+  const input = event.target as HTMLInputElement;
+  const file = input.files?.[0];
+  if (!file) return;
+  if (file.type !== 'application/pdf') {
+    this.error = this.i18n.t('error.invalid_file');
+    return;
+  }
+  this.isExtractingPdf = true;
+  this.error = '';
+  try {
+    this.cv = await this.pdfExtractor.extract(file);
+    this.importedFileName = file.name; // ← guarda el nombre
+  } catch (err) {
+    this.error = this.i18n.t('error.pdf_extraction');
+  } finally {
+    this.isExtractingPdf = false;
+    input.value = '';
+  }
+}
 
   submit() {
     this.error = '';
