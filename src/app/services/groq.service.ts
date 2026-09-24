@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { jobinput, GeneratedMaterials } from '../models/jobi.model';
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const MODEL = 'llama-3.3-70b-versatile';
+// const MODEL = 'llama-3.3-70b-versatile'; deprecado visto 24 sept /2026
+const   MODEL = 'openai/gpt-oss-120b';
 
 const SYSTEM_PROMPT = `You are a professional jobi application specialist.
 Your ONLY purpose is to help candidates write jobi application materials: LinkedIn messages, short pitches, and cover letters.
