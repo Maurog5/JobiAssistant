@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
 
+/** URL of the pdf.js worker, copied to the build output by angular.json (assets). */
+const PDF_WORKER_SRC = '/pdf.worker.min.mjs';
+
 @Injectable({ providedIn: 'root' })
 export class PdfExtractorService {
 
   async extract(file: File): Promise<string> {
-    const arrayBuffer = await file.arrayBuffer();
-    const typedArray = new Uint8Array(arrayBuffer);
-    const pdf = await (window as any).pdfjsLib.getDocument({ data: typedArray }).promise;
+    // Lazy-load pdf.js only when the user uploads a PDF, to keep the initial bundle small.
+    const pdfjs = await import('pdfjs-dist');
+    pdfjs.GlobalWorkerOptions.workerSrc = PDF_WORKER_SRC;
 
-    let fullText = '';
+    const data = new Uint8Array(await file.arrayBuffer());
+    const pdf = await pdfjs.getDocument({ data }).promise;
+
+    const pages: string[] = [];
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
       const content = await page.getTextContent();
-      fullText += content.items.map((item: any) => item.str).join(' ') + '\n';
+      pages.push(content.items.map(item => ('str' in item ? item.str : '')).join(' '));
     }
-    return fullText;
+    return pages.join('\n').trim();
   }
 }
