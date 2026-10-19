@@ -1,67 +1,116 @@
-# Jobi Assistant 🚀
+# Jobi Assistant
 
-> *"Mi misión es poner el poder de la IA en manos de las personas, no solo de las empresas. Herramientas inteligentes para potenciar tu talento."*
->
-> *"My mission is to put the power of AI in the hands of people, not just corporations. Intelligent tools to empower your talent."*
+> *"My mission is to put the power of AI in the hands of people, not just corporations."*
 
-Una herramienta de IA de código abierto, gratuita y sin registros para generar materiales de postulación laboral personalizados en segundos: mensajes de LinkedIn, presentaciones cortas y cartas de presentación completas.
+**Jobi Assistant** is a free, open-source web app that turns your CV and a job posting into three tailored application materials in seconds:
 
-**Tecnologías:** Angular 17 · Bootstrap 5 · Groq AI (LLaMA 3.3 70B)
+1. a short **LinkedIn message** for the recruiter,
+2. a **pitch** for the "tell us about yourself" field of job portals,
+3. a complete **cover letter**.
 
-🌐 **Demo en vivo:** [https://jobiassistant.com](https://jobiassistant.com)
-⭐ **Dale una estrella a este repo** si te ayudó a conseguir tu próximo Jobi!
+No sign-up, no backend, no stored data.
 
----
-
-## Características principales
-
-* 🌐 **Multilingüe** — Español e Inglés (fácil de extender).
-* 🤖 **Potenciado por IA** — Usa LLaMA 3.3 70B de Groq, optimizado para búsqueda de empleo.
-* 🔑 **Privacidad primero** — Tu API Key va directo a Groq; nada se guarda en servidores.
-* 📋 **3 Resultados en 1** — Mensaje para LinkedIn, Pitch corto y Carta de presentación.
-* 📱 **Responsive** — Diseño con Bootstrap 5, funciona en cualquier dispositivo.
-* 🔓 **Código Abierto** — Haz un fork, personalízalo y hazlo tuyo.
+🌐 **Live demo:** [jobiassistant.com](https://jobiassistant.com)
 
 ---
 
-## Cómo empezar (Fork & Run)
+## Features
 
-### 1. Haz un Fork del repositorio
-Haz clic en el botón **Fork** arriba a la derecha en GitHub.
+- **Tailored output** — every text is generated from *your* CV and *that* job offer, never from a generic template.
+- **Honest by design** — the prompts forbid inventing skills or experience and ask the model to handle gaps openly.
+- **Writes in the job's language** — the output follows the language of the job description.
+- **Bilingual UI** — Spanish and English, switchable at runtime (Angular Signals).
+- **Bring your own key** — you paste your free Groq API key in the browser; it is sent only to Groq.
+- **Responsive** — Bootstrap 5, works on mobile.
 
-### 2. Clona e instala
+## Tech stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Angular 17 (standalone components, Signals), TypeScript |
+| UI | Bootstrap 5, Bootstrap Icons |
+| AI | Groq API (OpenAI-compatible chat completions), model `openai/gpt-oss-120b` |
+| Hosting | Static SPA on Vercel |
+
+## Architecture
+
+Jobi Assistant is a **static single-page app with no backend**.
+
+```
+Browser (Angular SPA)
+  ├─ JobiFormComponent   → collects CV, job offer and API key
+  ├─ GroqService         → builds the prompts and calls the Groq API (3 sequential requests)
+  ├─ ResultsComponent    → shows the 3 materials in tabs, ready to copy
+  └─ I18nService         → ES/EN translations with Signals
+        │
+        ▼  HTTPS (Authorization: Bearer <user key>)
+   api.groq.com  (LLM)
+```
+
+### Why no backend? (privacy and security model)
+
+- The app never stores the CV, the job offer or the API key: there is no server and no database.
+- Each user brings their own Groq key ("BYOK"). It is kept in memory only for the current page and sent directly to `api.groq.com`.
+- No secret is bundled in the code: `src/environments/environment.ts` ships with an empty `groqApiKey`.
+- Trade-off: because the call happens in the browser, the key is visible to the user's own browser (as intended), and a hosted shared key would require a server-side proxy.
+
+### Prompt design
+
+`GroqService` uses one **system prompt** that restricts the model to job-application writing and enforces rules (no invented experience, same language as the offer, no preamble), plus one **task prompt per output** with explicit length and structure constraints (e.g. LinkedIn ≤ 80 words, cover letter in 4 paragraphs, with a paragraph for honest gap handling).
+
+## Getting started
+
 ```bash
 git clone https://github.com/Maurog5/JobiAssistant.git
 cd JobiAssistant
 npm install
-3. Configura tu API Key (Opcional)
-Bash
-cp src/environments/environment.example.ts src/environments/environment.ts
-Edita environment.ts y añade tu clave de Groq, o ingrésala directamente en la web.
+npm start          # http://localhost:4200
+```
 
-Estructura del Proyecto
-Plaintext
+Get a free API key at [console.groq.com/keys](https://console.groq.com/keys) and paste it in the form.
+
+Optional: to avoid pasting the key every time in local development, set it in `src/environments/environment.ts` — and never commit a real key.
+
+### Scripts
+
+| Command | Description |
+|---|---|
+| `npm start` | Dev server |
+| `npm run build` | Production build to `dist/` |
+
+## Project structure
+
+```
 src/
 ├── app/
 │   ├── components/
-│   │   ├── navbar/         # Navegación + selector de idioma
-│   │   ├── jobi-form/      # Formulario de entrada
-│   │   └── results/        # Resultados generados con pestañas
+│   │   ├── navbar/       # navigation + language switch
+│   │   ├── jobi-form/    # input form (CV, job offer, API key)
+│   │   ├── results/      # generated materials in tabs
+│   │   └── about/        # project mission
+│   ├── models/           # TypeScript interfaces
 │   └── services/
-│       ├── groq.service.ts # Conexión con API + Prompt del sistema
-│       └── i18n.service.ts # Servicio de traducción (Signals)
-└── locale/
-    ├── messages.en.json    # Textos en Inglés
-    └── messages.es.json    # Textos en Español
-Contribuir
-¡Las pull requests son bienvenidas! Ideas para mejorar:
+│       ├── groq.service.ts           # prompts + Groq API calls
+│       ├── i18n.service.ts           # translations (Signals)
+│       └── pdf-extractor.service.ts  # CV text extraction from PDF
+└── locale/               # messages.es.json, messages.en.json
+```
 
-Añadir más idiomas (Italiano, Francés, Portugués...).
+## Roadmap
 
-Añadir un formateador/limpiador de CV.
+- [ ] Fix and test CV upload from PDF
+- [ ] Italian translation
+- [ ] Streaming responses
+- [ ] Accessibility review (WCAG 2.1 AA)
+- [ ] Unit and E2E tests in CI (GitHub Actions)
 
-Exportar los resultados a PDF o modo oscuro.
+Contributions are welcome — open an issue or a pull request.
 
-Licencia
-Licencia MIT — libre para usar, modificar y distribuir.
-Creado por Mauro Gatica — Diseñado para que todos puedan postularse con confianza.
+## License
+
+MIT — free to use, modify and distribute. See [LICENSE](src/assets/LICENSE).
+
+## Author
+
+Built by **Mauro Gatica**, Full Stack Developer (Angular · TypeScript · Java/Spring Boot).
+[LinkedIn](https://www.linkedin.com/in/maurogatica) · [GitHub](https://github.com/Maurog5)
