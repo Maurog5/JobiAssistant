@@ -43,13 +43,12 @@
   "about.private": "Your privacy, first",
   "about.private.desc": "Nothing is stored. Your API key goes directly to Groq, never through any other server.",
   "about.free": "Free, no hidden costs",
-"about.free.desc": "No subscriptions, no ads.",
+  "about.free.desc": "No subscriptions, no ads.",
   "about.cta": "Start now",
   "footer.rights": "© 2026 Mauro Gatica ",
   "footer.opensource": "Open Source under MIT License.",
   "footer.groq": "Powered by Groq AI.",
   "footer.forall": "Built so everyone can apply with confidence.",
-
   "form.apikey.tutorial": "How do I get my API key?",
   "tutorial.title": "How to get your Groq API key",
   "tutorial.step1.title": "Go to console.groq.com",
@@ -62,9 +61,9 @@
   "tutorial.step3.copy": "Copy",
   "tutorial.footer": "Free · No credit card · Ready in 2 minutes",
   "tutorial.cta": "Got it!",
-
   "form.cv.import": "Import PDF",
   "form.cv.extracting": "Extracting...",
-  "form.cv.import_hint": "or paste the text manually"
-  
-  }
+  "form.cv.import_hint": "or paste the text manually",
+  "error.invalid_file": "The file must be a PDF.",
+  "error.pdf_extraction": "We couldn't read the PDF. Try another file or paste your CV text."
+}
