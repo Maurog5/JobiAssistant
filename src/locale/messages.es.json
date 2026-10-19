@@ -49,7 +49,6 @@
   "footer.opensource": "Open Source bajo licencia MIT.",
   "footer.groq": "Impulsado por Groq AI.",
   "footer.forall": "Hecho para que todos puedan postularse con confianza.",
-
   "form.apikey.tutorial": "¿Cómo obtengo mi API key?",
   "tutorial.title": "Cómo obtener tu API key de Groq",
   "tutorial.step1.title": "Entrá a console.groq.com",
@@ -62,10 +61,9 @@
   "tutorial.step3.copy": "Copiar",
   "tutorial.footer": "Gratis · Sin tarjeta · Listo en 2 minutos",
   "tutorial.cta": "¡Entendido!",
-
   "form.cv.import": "Importar PDF",
   "form.cv.extracting": "Extrayendo...",
-  "form.cv.import_hint": "o pega el texto manualmente"
-
- 
+  "form.cv.import_hint": "o pega el texto manualmente",
+  "error.invalid_file": "El archivo debe ser un PDF.",
+  "error.pdf_extraction": "No pudimos leer el PDF. Probá con otro archivo o pegá el texto de tu CV."
 }
