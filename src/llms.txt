@@ -1,0 +1,19 @@
+# Jobi Assistant
+
+> Herramienta web gratuita y open source que usa inteligencia artificial para generar, a partir de un CV y una oferta de trabajo, una carta de presentación, un mensaje para reclutadores de LinkedIn y un pitch corto. Funciona sin registro: cada persona usa su propia API key gratuita de Groq y el CV no se guarda en ningún servidor. Disponible en español e inglés.
+
+Desarrollado por Mauro Gatica como herramienta gratuita y de código abierto, disponible para todo el público.
+
+## Aplicación
+
+- [Jobi Assistant](https://jobiassistant.com/): aplicación web para generar los tres materiales de postulación.
+
+## Código y autor
+
+- [Repositorio en GitHub](https://github.com/Maurog5/JobiAssistant): código fuente del proyecto (licencia MIT).
+- [Mauro Gatica en GitHub](https://github.com/Maurog5)
+- [Mauro Gatica en LinkedIn](https://www.linkedin.com/in/maurogatica/)
+
+## Optional
+
+- [Groq Console](https://console.groq.com/keys): donde se obtiene gratis la API key que usa la aplicación.

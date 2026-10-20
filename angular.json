@@ -29,6 +29,7 @@
               "src/favicon.ico",
               "src/googlec3f886b7aaafac61.html",
               "src/sitemap.xml",
+              "src/llms.txt",
               "src/robots.txt",
               "src/assets",
               {
@@ -41,9 +42,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -104,9 +103,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+            "scripts": []
           }
         }
       }

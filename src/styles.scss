@@ -25,3 +25,36 @@ textarea.form-control {
 .btn-warning {
   color: #1a1a1a;
 }
+
+/* Iconos SVG en línea (reemplazan la fuente de bootstrap-icons) */
+.bi {
+  display: inline-block;
+  vertical-align: -0.125em;
+}
+
+/* Contraste accesible (WCAG AA) */
+:root {
+  --bs-secondary-rgb: 89, 95, 102; /* #595f66 sobre fondo claro: 6.1:1 */
+}
+
+.bg-dark {
+  --bs-secondary-rgb: 173, 181, 189; /* #adb5bd sobre #212529: 7.4:1 */
+
+  .btn-outline-secondary {
+    --bs-btn-color: #adb5bd;
+  }
+}
+
+/* Amarillo de marca oscurecido para texto sobre fondo claro */
+.brand-gold {
+  color: #b07d00;
+}
+
+.link-gold {
+  color: #946800;
+
+  &:hover,
+  &:focus {
+    color: #7a5600;
+  }
+}
